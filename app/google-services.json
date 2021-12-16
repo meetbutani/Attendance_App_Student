@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "833964192081",
+    "project_id": "attendance-app-107871",
+    "storage_bucket": "attendance-app-107871.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833964192081:android:4807cc793266a28e2ee370",
+        "android_client_info": {
+          "package_name": "com.meetbutani.attendanceapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833964192081-d1jnja3ov944iobun7m2gsfapk34hd9o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcXIYYM8CEhS3DkBAtYZU3OL4WCSsBWWI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "833964192081-d1jnja3ov944iobun7m2gsfapk34hd9o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
