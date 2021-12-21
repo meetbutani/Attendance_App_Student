@@ -1,3 +1,61 @@
 <resources>
     <string name="app_name">Attendance App - Student</string>
+
+    <!-- dialog -->
+    <string name="etSingleField">Enter Text</string>
+
+
+    <!-- activity_login -->
+    <string name="etLoginEmail">Email ID</string>
+    <string name="etLoginPassword">Password</string>
+    <string name="buttonLogin">Login</string>
+    <string name="textViewRegisterNow">Don\'t have an account? Register Now</string>
+
+    <!-- activity_main -->
+    <string name="buttonLogout">Logout</string>
+
+    <!-- activity_register -->
+    <string name="etRegisterFirstName">First Name</string>
+    <string name="etRegisterLastName">Last Name</string>
+    <string name="etRegisterEmail">Email ID</string>
+    <string name="etRegisterRollNo">Roll No</string>
+    <string name="etRegisterPassword">Password</string>
+    <string name="etRegisterConfirmPassword">Confirm Password</string>
+    <string name="buttonRegister">Register</string>
+    <string name="textViewLoginNow">Already have an Account? Login Now</string>
+    <string name="textViewForgotPassword">Forgot Password?</string>
+    <string name="textViewResendEmail">Resend verification Email</string>
+
+    <!-- activity_courses -->
+    <string name="tvDisCourses">Courses</string>
+
+    <!-- layout_courses -->
+    <string name="tvLayCoursesCourseName">Course Name</string>
+
+    <!-- menu_courses -->
+    <string name="itMore">More</string>
+    <string name="itProfile">Profile</string>
+    <string name="itJoinCourse">Join New Course</string>
+    <string name="itLogout">Logout</string>
+
+    <!-- activity_profile -->
+    <string name="tvProfileName">Name:</string>
+    <string name="tvProfileEmail">Email Id:</string>
+    <string name="btnProfileChangePassword">Change Password</string>
+    <string name="btnProfileSignOut">Sign Out</string>
+
+    <!-- activity_attendance_sheet -->
+    <string name="tvASCourseName">Course Name:</string>
+    <string name="tvASCourseId">Course ID:</string>
+
+    <!-- fragment_attendance_sheet -->
+    <string name="fabFragAS">New Attendance Sheet</string>
+
+    <!-- fragment_students -->
+    <string name="tvFragStuClass">Class:</string>
+    <string name="rbtnFragStuLecture">Lecture</string>
+    <string name="rbtnFragStuBatchA">A Batch</string>
+    <string name="rbtnFragStuBatchB">B Batch</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

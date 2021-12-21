@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/itMore"
+        android:icon="@drawable/ic_more"
+        android:title="@string/itMore"
+        app:showAsAction="always">
+
+        <menu>
+
+            <item
+                android:id="@+id/itProfile"
+                android:icon="@drawable/ic_profile"
+                android:title="@string/itProfile" />
+
+            <item
+                android:id="@+id/itJoinCourse"
+                android:icon="@drawable/ic_add_course"
+                android:title="@string/itJoinCourse" />
+
+            <item
+                android:id="@+id/itLogout"
+                android:icon="@drawable/ic_logout"
+                android:title="@string/itLogout" />
+
+        </menu>
+
+    </item>
+
+</menu>

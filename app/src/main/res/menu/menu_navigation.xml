@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:tools="navigation_view">
+
+    <item
+        android:id="@+id/itCourse"
+        android:icon="@drawable/ic_courses"
+        android:title="Courses" />
+
+    <item
+        android:id="@+id/nav_home2"
+        android:icon="@drawable/ic_add"
+        android:title="Home2" />
+
+    <item
+        android:id="@+id/nav_home3"
+        android:icon="@drawable/ic_add"
+        android:title="Home3" />
+
+    <item
+        android:id="@+id/nav_home4"
+        android:icon="@drawable/ic_add"
+        android:title="Home4" />
+
+    <item
+        android:id="@+id/nav_home5"
+        android:icon="@drawable/ic_add"
+        android:title="Home5" />
+
+    <item
+        android:id="@+id/nav_home6"
+        android:icon="@drawable/ic_add"
+        android:title="Explore">
+
+        <menu>
+
+            <item
+                android:id="@+id/nav_home7"
+                android:icon="@drawable/ic_add"
+                android:title="Home7" />
+
+            <item
+                android:id="@+id/nav_home8"
+                android:icon="@drawable/ic_add"
+                android:title="Home8" />
+
+        </menu>
+
+    </item>
+
+    <item
+        android:id="@+id/nav_home9"
+        android:icon="@drawable/ic_add"
+        android:title="Explore">
+
+        <menu>
+
+            <item
+                android:id="@+id/nav_home10"
+                android:icon="@drawable/ic_add"
+                android:title="Home10" />
+
+            <item
+                android:id="@+id/nav_home11"
+                android:icon="@drawable/ic_add"
+                android:title="Home11" />
+
+        </menu>
+
+    </item>
+
+</menu>
