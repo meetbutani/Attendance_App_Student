@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,8 +23,6 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -163,49 +160,54 @@ public class MainActivity extends BaseActivity {
                 .setPositiveButton("Join", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        String courseId = Objects.requireNonNull(etDialogCourseId.getText()).toString().trim();
+                        String courseId = String.valueOf(etDialogCourseId.getText()).trim();
+                        if (courseId.isEmpty()) return;
 
                         firebaseFirestore.collection(COURSESPATH).document(courseId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                             @Override
                             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                String id = Objects.requireNonNull(documentSnapshot.get("courseId")).toString();
-                                if (id.equalsIgnoreCase(courseId)) {
-                                    String Class = " ";
-                                    if (rBtnDialogA.isChecked())
-                                        Class = "A";
-                                    if (rBtnDialogB.isChecked())
-                                        Class = "B";
+                                if (!String.valueOf(documentSnapshot.get("courseId")).isEmpty()) {
+                                    String id = String.valueOf(documentSnapshot.get("courseId"));
+                                    if (id.equalsIgnoreCase(courseId)) {
+                                        String Class = " ";
+                                        if (rBtnDialogA.isChecked())
+                                            Class = "A";
+                                        if (rBtnDialogB.isChecked())
+                                            Class = "B";
 
-                                    Map<String, Object> addCourse = new HashMap<>();
-                                    addCourse.put("courseName", documentSnapshot.get("courseName"));
-                                    addCourse.put("courseId", id);
+                                        Map<String, Object> addCourse = new HashMap<>();
+                                        addCourse.put("courseName", documentSnapshot.get("courseName"));
+                                        addCourse.put("courseId", id);
 
-                                    String finalClass = Class;
-                                    firebaseFirestore.collection(STUDENTPATH + "/" + getUid() + "/courses").document(courseId).set(addCourse).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void unused) {
+                                        String finalClass = Class;
+                                        firebaseFirestore.collection(STUDENTPATH + "/" + getUid() + "/courses").document(courseId).set(addCourse).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
 
-                                            firebaseFirestore.collection(STUDENTPATH).document(getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                                @Override
-                                                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                                    Map<String, Object> addStudent = new HashMap<>();
-                                                    addStudent.put("firstName", documentSnapshot.get("firstName"));
-                                                    addStudent.put("lastName", documentSnapshot.get("lastName"));
-                                                    addStudent.put("rollNo", documentSnapshot.get("rollNo"));
-                                                    addStudent.put("emailId", documentSnapshot.get("emailId"));
-                                                    addStudent.put("imageURL", documentSnapshot.get("imageURL"));
-                                                    addStudent.put("Class", finalClass);
-                                                    firebaseFirestore.collection(COURSESPATH + "/" + id + "/students").document(getUid()).set(addStudent).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                        @Override
-                                                        public void onSuccess(Void unused) {
-                                                            Toast.makeText(getApplicationContext(), "Course Add Successfully", Toast.LENGTH_SHORT).show();
-                                                            setFragment(new CourseFragment());
-                                                        }
-                                                    });
-                                                }
-                                            });
-                                        }
-                                    });
+                                                firebaseFirestore.collection(STUDENTPATH).document(getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                    @Override
+                                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                        Map<String, Object> addStudent = new HashMap<>();
+                                                        addStudent.put("firstName", documentSnapshot.get("firstName"));
+                                                        addStudent.put("lastName", documentSnapshot.get("lastName"));
+                                                        addStudent.put("rollNo", documentSnapshot.get("rollNo"));
+                                                        addStudent.put("emailId", documentSnapshot.get("emailId"));
+                                                        addStudent.put("imageURL", documentSnapshot.get("imageURL"));
+                                                        addStudent.put("Class", finalClass);
+                                                        firebaseFirestore.collection(COURSESPATH + "/" + id + "/students").document(getUid()).set(addStudent).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void unused) {
+                                                                Toast.makeText(getApplicationContext(), "Course Add Successfully", Toast.LENGTH_SHORT).show();
+                                                                setFragment(new CourseFragment());
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                        });
+                                    } else {
+                                        Toast.makeText(MainActivity.this, "Course Not Found", Toast.LENGTH_SHORT).show();
+                                    }
                                 } else {
                                     Toast.makeText(MainActivity.this, "Course Not Found", Toast.LENGTH_SHORT).show();
                                 }

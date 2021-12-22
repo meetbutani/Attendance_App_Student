@@ -191,7 +191,7 @@ public class RegisterActivity extends BaseActivity {
     private void pickFromGallery() {
         CropImage.activity()
                 .setActivityTitle("Image Cropper")
-                .setCropShape(CropImageView.CropShape.OVAL)
+                .setCropShape(CropImageView.CropShape.RECTANGLE)
                 .setAspectRatio(1, 1)
                 .setBackgroundColor(Color.parseColor("#AA000000"))
                 .start(RegisterActivity.this);

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -30,6 +31,7 @@ public class AttendanceSheetFragment extends BaseFragment {
     private Bundle bundle;
     private ModelCourse modelCourse;
     private ModelAttendanceSheet modelAttendanceSheet;
+    private TextView tvDisASCourseName, tvDisASCourseId;
     private String COURSEID;
 
     private RecyclerView rvFragAS;
@@ -40,7 +42,12 @@ public class AttendanceSheetFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        bundle = this.getArguments();
 
+        if (bundle != null) {
+            modelCourse = (ModelCourse) bundle.getSerializable("modelCourse");
+            COURSEID = modelCourse.courseId;
+        }
     }
 
     @Override
@@ -53,35 +60,25 @@ public class AttendanceSheetFragment extends BaseFragment {
 
         rvFragAS = view.findViewById(R.id.rvFragAS);
 
-        modelCourse = getModelCourse();
+        tvDisASCourseName = view.findViewById(R.id.tvDisASCourseName);
+        tvDisASCourseId = view.findViewById(R.id.tvDisASCourseId);
+
+        tvDisASCourseName.setText(modelCourse.courseName);
+        tvDisASCourseId.setText(modelCourse.courseId);
 
         displayAttendanceSheet();
 
         return view;
     }
 
-    private ModelCourse getModelCourse() {
-        AttendanceSheetFragment fragment = new AttendanceSheetFragment();
-        bundle = fragment.bundle;
-
-        if (bundle != null) {
-            modelCourse = (ModelCourse) bundle.getSerializable("modelCourse");
-            COURSEID = modelCourse.courseId;
-        }
-
-        return modelCourse;
-    }
-
-
     private void displayAttendanceSheet() {
         try {
             rvFragAS.setHasFixedSize(true);
 
             arrayListModelAttendanceSheet = new ArrayList<>();
-            adapterAttendanceSheet = new AdapterAttendanceSheet(getActivity(), arrayListModelAttendanceSheet, getModelCourse());
+            adapterAttendanceSheet = new AdapterAttendanceSheet(getActivity(), arrayListModelAttendanceSheet, modelCourse);
             rvFragAS.setAdapter(adapterAttendanceSheet);
 
-            getModelCourse();
             firebaseFirestore.collection(COURSESPATH + "/" + COURSEID + "/sheets").orderBy("timestamp", Query.Direction.DESCENDING).get()
                     .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                         @SuppressLint("NotifyDataSetChanged")
