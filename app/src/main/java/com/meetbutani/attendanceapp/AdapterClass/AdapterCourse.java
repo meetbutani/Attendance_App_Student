@@ -1,4 +1,4 @@
-package com.meetbutani.attendanceapp.CourseData;
+package com.meetbutani.attendanceapp.AdapterClass;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.meetbutani.attendanceapp.AttendanceSheetFragment;
+import com.meetbutani.attendanceapp.ModelClass.ModelCourse;
 import com.meetbutani.attendanceapp.R;
 
 import java.util.ArrayList;

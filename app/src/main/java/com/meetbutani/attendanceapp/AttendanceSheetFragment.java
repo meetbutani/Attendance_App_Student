@@ -9,17 +9,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.meetbutani.attendanceapp.AttendanceSheetData.AdapterAttendanceSheet;
-import com.meetbutani.attendanceapp.AttendanceSheetData.ModelAttendanceSheet;
-import com.meetbutani.attendanceapp.CourseData.ModelCourse;
+import com.meetbutani.attendanceapp.AdapterClass.AdapterAttendanceSheet;
+import com.meetbutani.attendanceapp.ModelClass.ModelAttendanceSheet;
+import com.meetbutani.attendanceapp.ModelClass.ModelCourse;
 
 import java.util.ArrayList;
 import java.util.List;
