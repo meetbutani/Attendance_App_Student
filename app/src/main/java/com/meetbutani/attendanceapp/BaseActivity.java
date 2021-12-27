@@ -12,6 +12,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -44,13 +45,13 @@ public class BaseActivity extends AppCompatActivity {
         editSP.putString("uid", value).commit();
     }
 
-    protected void setFragment(Fragment fragment) {
+    protected void setFragment(Fragment fragment, String FragTitle) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frameLayMain, fragment)
+                .replace(R.id.frameLayMain, fragment, FragTitle)
+                .addToBackStack(null)
                 .commit();
     }
-
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {

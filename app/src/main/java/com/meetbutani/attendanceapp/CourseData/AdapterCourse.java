@@ -68,7 +68,7 @@ public class AdapterCourse extends RecyclerView.Adapter<AdapterCourse.ViewHolder
             fragment.setArguments(bundle);
             CONTEXT.getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.frameLayMain, fragment)
+                    .replace(R.id.frameLayMain, fragment, "AttendanceSheetFragment")
                     .addToBackStack(null)
                     .commit();
 

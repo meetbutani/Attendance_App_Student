@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,6 +34,9 @@ public class MainActivity extends BaseActivity {
     private DrawerLayout drawerLayout;
     private MaterialToolbar tbMainActivity;
     private NavigationView navViewMain;
+    
+    private long backPressedTime;
+    private Toast toast;
 
     @SuppressLint("WrongConstant")
     @Override
@@ -48,7 +52,7 @@ public class MainActivity extends BaseActivity {
 
         CONTEXT = MainActivity.this;
 
-        setFragment(new CourseFragment());
+        setFragment(new CourseFragment(), "CourseFragment");
 
         tbMainActivity.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +70,7 @@ public class MainActivity extends BaseActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 switch (id) {
                     case R.id.itCourse:
-                        setFragment(new CourseFragment());
+                        setFragment(new CourseFragment(), "CourseFragment");
                         break;
 
                     case R.id.nav_home2:
@@ -198,7 +202,7 @@ public class MainActivity extends BaseActivity {
                                                             @Override
                                                             public void onSuccess(Void unused) {
                                                                 Toast.makeText(getApplicationContext(), "Course Add Successfully", Toast.LENGTH_SHORT).show();
-                                                                setFragment(new CourseFragment());
+                                                                setFragment(new CourseFragment(), "CourseFragment");
                                                             }
                                                         });
                                                     }
@@ -224,5 +228,41 @@ public class MainActivity extends BaseActivity {
                 });
 
         builder.create().show();
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag("CourseFragment");
+
+        if (fragment instanceof CourseFragment && fragment.isVisible()) {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+            dialog.setMessage("Are you sure you want to exit from Attendance App - Student");
+            dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    MainActivity.super.onBackPressed();
+                    MainActivity.super.onBackPressed();
+                }
+            });
+            dialog.setNegativeButton("No", (dialog1, which) -> {
+            });
+            dialog.create().show();
+        } else super.onBackPressed();
+        
+        
+/*
+        if (fragment instanceof CourseFragment && fragment.isVisible()){
+            if (backPressedTime + 2000 > System.currentTimeMillis()){
+                toast.cancel();
+                super.onBackPressed();
+                super.onBackPressed();
+            } else {
+                toast = Toast.makeText(MainActivity.this, "Press back again to exit", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+            backPressedTime = System.currentTimeMillis();
+        } else super.onBackP    ressed();
+*/
     }
 }
