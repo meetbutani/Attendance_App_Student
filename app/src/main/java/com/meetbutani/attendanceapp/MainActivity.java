@@ -239,7 +239,7 @@ public class MainActivity extends BaseActivity {
 
         if (fragment instanceof CourseFragment && fragment.isVisible()) {
             AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
-            dialog.setMessage("Are you sure you want to exit from Attendance App - Student");
+            dialog.setMessage("Are you sure you want to exit ?");
             dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
