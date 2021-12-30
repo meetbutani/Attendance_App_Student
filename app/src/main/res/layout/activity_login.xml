@@ -64,9 +64,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                app:endIconMode="password_toggle"
                 android:layout_marginVertical="3dp"
-                android:hint="@string/etLoginPassword">
+                android:hint="@string/etLoginPassword"
+                app:endIconMode="password_toggle">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etLoginPassword"

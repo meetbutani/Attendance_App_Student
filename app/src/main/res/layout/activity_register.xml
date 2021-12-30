@@ -87,8 +87,8 @@
                         android:id="@+id/etRegisterFirstName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:imeOptions="actionNext"
                         android:autofillHints="username"
+                        android:imeOptions="actionNext"
                         android:inputType="textCapWords" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -107,8 +107,8 @@
                         android:id="@+id/etRegisterLastName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:imeOptions="actionNext"
                         android:autofillHints="username"
+                        android:imeOptions="actionNext"
                         android:inputType="textCapWords" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -322,8 +322,8 @@
                     android:id="@+id/etRegisterConfirmPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:imeOptions="normal"
                     android:autofillHints="password"
+                    android:imeOptions="normal"
                     android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>

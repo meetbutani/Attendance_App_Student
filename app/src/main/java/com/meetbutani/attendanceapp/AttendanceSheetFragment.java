@@ -1,6 +1,10 @@
 package com.meetbutani.attendanceapp;
 
+import static android.content.Context.CLIPBOARD_SERVICE;
+
 import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +16,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -30,6 +35,7 @@ public class AttendanceSheetFragment extends BaseFragment {
     private ModelCourse modelCourse;
     private ModelAttendanceSheet modelAttendanceSheet;
     private TextView tvDisASCourseName, tvDisASCourseId;
+    private ShapeableImageView ivCopyCourseId;
     private String COURSEID;
 
     private RecyclerView rvFragAS;
@@ -60,11 +66,26 @@ public class AttendanceSheetFragment extends BaseFragment {
 
         tvDisASCourseName = view.findViewById(R.id.tvDisASCourseName);
         tvDisASCourseId = view.findViewById(R.id.tvDisASCourseId);
+        ivCopyCourseId = view.findViewById(R.id.ivCopyCourseId);
+
 
         tvDisASCourseName.setText(modelCourse.courseName);
         tvDisASCourseId.setText(modelCourse.courseId);
 
         displayAttendanceSheet();
+
+        ivCopyCourseId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) requireActivity().getSystemService(CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText(null, tvDisASCourseId.getText().toString());
+                if (clipboard == null) return;
+                clipboard.setPrimaryClip(clip);
+
+                Toast.makeText(getContext(), "Course ID Copied!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         return view;
     }
@@ -74,7 +95,7 @@ public class AttendanceSheetFragment extends BaseFragment {
             rvFragAS.setHasFixedSize(true);
 
             arrayListModelAttendanceSheet = new ArrayList<>();
-            adapterAttendanceSheet = new AdapterAttendanceSheet(getActivity(), arrayListModelAttendanceSheet, modelCourse);
+            adapterAttendanceSheet = new AdapterAttendanceSheet(getActivity(), arrayListModelAttendanceSheet, bundle);
             rvFragAS.setAdapter(adapterAttendanceSheet);
 
             firebaseFirestore.collection(COURSESPATH + "/" + COURSEID + "/sheets").orderBy("timestamp", Query.Direction.DESCENDING).get()
@@ -86,8 +107,15 @@ public class AttendanceSheetFragment extends BaseFragment {
 
                             for (DocumentSnapshot documentSnapshot : list) {
                                 modelAttendanceSheet = documentSnapshot.toObject(ModelAttendanceSheet.class);
-                                arrayListModelAttendanceSheet.add(modelAttendanceSheet);
+                                assert modelAttendanceSheet != null;
+
+                                String[] classArray = modelAttendanceSheet.Class.split(" ");
+                                if (classArray[0].equalsIgnoreCase(modelCourse.Class) || modelAttendanceSheet.Class.equalsIgnoreCase("Lecture")) {
+                                    arrayListModelAttendanceSheet.add(modelAttendanceSheet);
+//                                    Toast.makeText(CONTEXT, modelAttendanceSheet.Class, Toast.LENGTH_SHORT).show();
+                                }
                             }
+//                            Toast.makeText(CONTEXT, modelCourse.Class, Toast.LENGTH_SHORT).show();
 
                             adapterAttendanceSheet.notifyDataSetChanged();
                         }

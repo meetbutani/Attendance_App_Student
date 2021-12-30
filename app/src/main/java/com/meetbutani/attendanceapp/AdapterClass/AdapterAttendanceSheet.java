@@ -1,15 +1,16 @@
 package com.meetbutani.attendanceapp.AdapterClass;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.meetbutani.attendanceapp.ManualAttendanceFragment;
 import com.meetbutani.attendanceapp.ModelClass.ModelAttendanceSheet;
 import com.meetbutani.attendanceapp.ModelClass.ModelCourse;
 import com.meetbutani.attendanceapp.R;
@@ -20,12 +21,18 @@ public class AdapterAttendanceSheet extends RecyclerView.Adapter<AdapterAttendan
 
     private final FragmentActivity CONTEXT;
     private final ArrayList<ModelAttendanceSheet> arrayListModelAttendanceSheet;
-    private final ModelCourse modelCourse;
+    private final Bundle bundleAS;
+    private ModelCourse modelCourse;
 
-    public AdapterAttendanceSheet(FragmentActivity CONTEXT, ArrayList<ModelAttendanceSheet> arrayListModelAttendanceSheet, ModelCourse modelCourse) {
+    public AdapterAttendanceSheet(FragmentActivity CONTEXT, ArrayList<ModelAttendanceSheet> arrayListModelAttendanceSheet, Bundle bundleAS) {
         this.CONTEXT = CONTEXT;
         this.arrayListModelAttendanceSheet = arrayListModelAttendanceSheet;
-        this.modelCourse = modelCourse;
+        this.bundleAS = bundleAS;
+
+        if (bundleAS != null) {
+            modelCourse = (ModelCourse) bundleAS.getSerializable("modelCourse");
+        }
+
     }
 
     @NonNull
@@ -67,12 +74,22 @@ public class AdapterAttendanceSheet extends RecyclerView.Adapter<AdapterAttendan
         @Override
         public void onClick(View view) {
             int position = this.getAdapterPosition();
-            Toast.makeText(CONTEXT, position + "", Toast.LENGTH_SHORT).show();
-//            ModelAttendanceSheet modelAttendanceSheet = dataListCourseHomepage.get(position);
-//            Intent intent = new Intent(CONTEXT, SheetHomepageActivity.class);
-//            intent.putExtra("modelAttendanceSheet", modelAttendanceSheet);
-//            intent.putExtra("modelCourseList", modelCourse);
-//            CONTEXT.startActivity(intent);
+            ModelAttendanceSheet modelAttendanceSheet = arrayListModelAttendanceSheet.get(position);
+//            Toast.makeText(CONTEXT, position + "", Toast.LENGTH_SHORT).show();
+
+            Bundle bundleAS = new Bundle();
+            bundleAS.putSerializable("modelCourse", modelCourse);
+            bundleAS.putSerializable("modelAttendanceSheet", modelAttendanceSheet);
+
+            if (modelAttendanceSheet.type.equalsIgnoreCase("Manual")) {
+                ManualAttendanceFragment fragment = new ManualAttendanceFragment();
+                fragment.setArguments(bundleAS);
+                CONTEXT.getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frameLayMain, fragment, "ManualAttendanceFragment")
+                        .addToBackStack(null)
+                        .commit();
+            }
         }
     }
 }

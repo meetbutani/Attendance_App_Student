@@ -364,6 +364,8 @@ public class RegisterActivity extends BaseActivity {
                             .set(userInfo).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
+                            setRollNo(rollNo);
+
                             Toast.makeText(CONTEXT, "Registered Successfully", Toast.LENGTH_SHORT).show();
 
                             firebaseAuth.signOut();

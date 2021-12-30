@@ -34,7 +34,7 @@ public class MainActivity extends BaseActivity {
     private DrawerLayout drawerLayout;
     private MaterialToolbar tbMainActivity;
     private NavigationView navViewMain;
-    
+
     private long backPressedTime;
     private Toast toast;
 
@@ -179,11 +179,13 @@ public class MainActivity extends BaseActivity {
                                         if (rBtnDialogB.isChecked())
                                             Class = "B";
 
+                                        String finalClass = Class;
+
                                         Map<String, Object> addCourse = new HashMap<>();
                                         addCourse.put("courseName", documentSnapshot.get("courseName"));
                                         addCourse.put("courseId", id);
+                                        addCourse.put("Class", finalClass);
 
-                                        String finalClass = Class;
                                         firebaseFirestore.collection(STUDENTPATH + "/" + getUid() + "/courses").document(courseId).set(addCourse).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {

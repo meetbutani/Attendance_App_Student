@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginHorizontal="10dp"
-    android:layout_marginVertical="2dp"
-    android:backgroundTint="@color/gray"
-    app:cardCornerRadius="5dp"
-    app:cardElevation="5dp">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ManualAttendanceFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="?selectableItemBackground"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -21,27 +17,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="5dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvRVFragASDate"
+                android:id="@+id/tvRVFragMADate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Date"
-                android:textAlignment="center"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvRVFragASClass"
+                android:id="@+id/tvRVFragMAClass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Class"
-                android:textAlignment="center"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -52,27 +45,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="5dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvRVFragASTime"
+                android:id="@+id/tvRVFragMATime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Time"
-                android:textAlignment="center"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/tvRVFragASType"
+                android:id="@+id/tvRVFragMAType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Type"
-                android:textAlignment="center"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -81,4 +71,42 @@
 
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivShowAttendance"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_unmark_back"
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tvShowAttendance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivShowAttendance"
+                android:layout_centerInParent="true"
+                android:layout_marginVertical="10dp"
+                android:text="Un-Mark"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</LinearLayout>

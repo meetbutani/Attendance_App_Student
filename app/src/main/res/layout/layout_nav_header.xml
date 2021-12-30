@@ -37,18 +37,18 @@
     <TextView
         android:id="@+id/tvProfileName"
         style="@style/tvFixLinearProfile"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="16sp"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:text="@string/tvProfileName" />
+        android:layout_gravity="center"
+        android:text="@string/tvProfileName"
+        android:textSize="16sp" />
 
     <View
         android:layout_width="wrap_content"
         android:layout_height="2dp"
         android:layout_marginVertical="5dp"
-        android:background="@android:color/darker_gray"/>
+        android:background="@android:color/darker_gray" />
 
 </LinearLayout>
 

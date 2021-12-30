@@ -181,6 +181,8 @@ public class LoginActivity extends BaseActivity {
                                 @Override
                                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                                     if (TextUtils.equals(documentSnapshot.getString("userType"), "Student")) {
+                                        setRollNo(documentSnapshot.getString("rollNo"));
+
                                         Toast.makeText(CONTEXT, "Login Successfully", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(CONTEXT, MainActivity.class));
                                         finish();
@@ -215,7 +217,7 @@ public class LoginActivity extends BaseActivity {
                                 Toast.makeText(CONTEXT, e.getMessage(), Toast.LENGTH_LONG).show();
                                 break;
                         }
-                    } catch (Exception error){
+                    } catch (Exception error) {
                         AlertDialog.Builder dialog = new AlertDialog.Builder(CONTEXT);
                         dialog.setMessage("Error: " + error.getMessage()).create().show();
                     }

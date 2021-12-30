@@ -22,8 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="name"
-            android:minHeight="48dp"
-            android:inputType="text" />
+            android:inputType="text"
+            android:minHeight="48dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
