@@ -9,8 +9,10 @@
         <entry key="..\:/Project_Sem_6/Attendance_App_Student/app/src/main/res/drawable/ic_student.xml" value="0.23958333333333334" />
         <entry key="..\:/Project_Sem_6/Attendance_App_Student/app/src/main/res/layout/activity_register.xml" value="0.21927083333333333" />
         <entry key="..\:/Project_Sem_6/Attendance_App_Student/app/src/main/res/layout/fragment_attendance_sheet.xml" value="0.20925925925925926" />
+        <entry key="..\:/Project_Sem_6/Attendance_App_Student/app/src/main/res/layout/fragment_course.xml" value="0.21927083333333333" />
         <entry key="..\:/Project_Sem_6/Attendance_App_Student/app/src/main/res/layout/fragment_manual_attendance.xml" value="0.264" />
         <entry key="..\:/Project_Sem_6/Attendance_App_Student/app/src/main/res/layout/layout_frag_attendance_sheet.xml" value="0.19283276450511946" />
+        <entry key="..\:/Project_Sem_6/Attendance_App_Student/app/src/main/res/layout/layout_frag_courses.xml" value="0.21927083333333333" />
       </map>
     </option>
   </component>
