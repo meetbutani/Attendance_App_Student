@@ -210,8 +210,7 @@ public class LoginActivity extends BaseActivity {
                                 break;
                             case "ERROR_WRONG_PASSWORD":
                                 etErLoginPassword.setErrorEnabled(true);
-                                etErLoginPassword.setError("Invalid Email ID");
-                                etLoginPassword.setError("Invalid Password");
+                                etErLoginPassword.setError("Invalid Password");
                                 break;
                             default:
                                 Toast.makeText(CONTEXT, e.getMessage(), Toast.LENGTH_LONG).show();
@@ -260,7 +259,11 @@ public class LoginActivity extends BaseActivity {
         etErSingleField.setHint("Email Id");
 
         etSingleField.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        try {
         etSingleField.setAutofillHints(View.AUTOFILL_HINT_EMAIL_ADDRESS);
+        } catch (NoSuchMethodError ignored){
+
+        }
 
         builder.setView(dialog)
                 .setTitle("Reset Password Link")
