@@ -179,9 +179,13 @@ public class LoginActivity extends BaseActivity {
                     firebaseFirestore.collection(STUDENTPATH).document(getUid()).get()
                             .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                 @Override
-                                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                    if (TextUtils.equals(documentSnapshot.getString("userType"), "Student")) {
-                                        setRollNo(documentSnapshot.getString("rollNo"));
+                                public void onSuccess(DocumentSnapshot ds) {
+                                    if (TextUtils.equals(ds.getString("userType"), "Student")) {
+
+                                        setName(ds.getString("firstName"), ds.getString("lastName"));
+                                        setEmailId(ds.getString("emailId"));
+                                        setImageURL(ds.getString("imageURL"));
+                                        setRollNo(ds.getString("rollNo"));
 
                                         Toast.makeText(CONTEXT, "Login Successfully", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(CONTEXT, MainActivity.class));

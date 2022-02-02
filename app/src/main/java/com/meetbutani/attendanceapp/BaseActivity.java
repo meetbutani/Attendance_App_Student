@@ -34,15 +34,53 @@ public class BaseActivity extends AppCompatActivity {
     protected SharedPreferences readSP;
     protected SharedPreferences.Editor editSP;
 
-    protected String getUid() {
-        readSP = getSharedPreferences("userData", MODE_APPEND);
-        return readSP.getString("uid", "null");
+    private void readSP() {
+        readSP = CONTEXT.getSharedPreferences("userData", MODE_APPEND);
+    }
+
+    private void editSP() {
+        editorSP = CONTEXT.getSharedPreferences("userData", MODE_PRIVATE);
+        editSP = editorSP.edit();
     }
 
     protected void setUid(String value) {
-        editorSP = getSharedPreferences("userData", MODE_PRIVATE);
-        editSP = editorSP.edit();
+        editSP();
         editSP.putString("uid", value).commit();
+    }
+
+    protected String getUid() {
+        readSP();
+        return readSP.getString("uid", "null");
+    }
+
+    protected void setName(String firstName, String lastName) {
+        editSP();
+        editSP.putString("name", firstName + " " + lastName).commit();
+    }
+
+    protected String getName() {
+        readSP();
+        return readSP.getString("name", " ");
+    }
+
+    protected void setImageURL(String imageURL) {
+        editSP();
+        editSP.putString("imageURL", imageURL).commit();
+    }
+
+    protected String getImageURL() {
+        readSP();
+        return readSP.getString("imageURL", " ");
+    }
+
+    protected void setEmailId(String emailId) {
+        editSP();
+        editSP.putString("emailId", emailId).commit();
+    }
+
+    protected String getEmailId() {
+        readSP();
+        return readSP.getString("emailId", " ");
     }
 
     protected String getRollNo() {
