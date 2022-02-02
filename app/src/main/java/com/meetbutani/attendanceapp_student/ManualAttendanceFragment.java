@@ -1,4 +1,4 @@
-package com.meetbutani.attendanceapp;
+package com.meetbutani.attendanceapp_student;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,18 +9,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.imageview.ShapeableImageView;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.meetbutani.attendanceapp.ModelClass.ModelAttendanceSheet;
-import com.meetbutani.attendanceapp.ModelClass.ModelCourse;
-
-import java.util.Objects;
+import com.meetbutani.attendanceapp_student.ModelClass.ModelAttendanceSheet;
+import com.meetbutani.attendanceapp_student.ModelClass.ModelCourse;
 
 public class ManualAttendanceFragment extends BaseFragment {
 

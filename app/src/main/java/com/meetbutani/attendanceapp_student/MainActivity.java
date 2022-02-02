@@ -1,4 +1,4 @@
-package com.meetbutani.attendanceapp;
+package com.meetbutani.attendanceapp_student;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;

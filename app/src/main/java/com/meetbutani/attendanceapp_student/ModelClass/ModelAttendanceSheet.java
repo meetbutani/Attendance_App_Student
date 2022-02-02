@@ -1,4 +1,4 @@
-package com.meetbutani.attendanceapp.ModelClass;
+package com.meetbutani.attendanceapp_student.ModelClass;
 
 import java.io.Serializable;
 

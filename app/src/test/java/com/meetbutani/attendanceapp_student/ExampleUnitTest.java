@@ -1,4 +1,4 @@
-package com.meetbutani.attendanceapp;
+package com.meetbutani.attendanceapp_student;
 
 import static org.junit.Assert.assertEquals;
 

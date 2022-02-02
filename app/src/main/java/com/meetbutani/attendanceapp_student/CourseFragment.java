@@ -1,4 +1,4 @@
-package com.meetbutani.attendanceapp;
+package com.meetbutani.attendanceapp_student;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -9,14 +9,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.meetbutani.attendanceapp.AdapterClass.AdapterCourse;
-import com.meetbutani.attendanceapp.ModelClass.ModelCourse;
+import com.meetbutani.attendanceapp_student.AdapterClass.AdapterCourse;
+import com.meetbutani.attendanceapp_student.ModelClass.ModelCourse;
 
 import java.util.ArrayList;
 import java.util.List;

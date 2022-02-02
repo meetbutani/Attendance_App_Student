@@ -1,4 +1,4 @@
-package com.meetbutani.attendanceapp;
+package com.meetbutani.attendanceapp_student;
 
 import android.Manifest;
 import android.annotation.SuppressLint;

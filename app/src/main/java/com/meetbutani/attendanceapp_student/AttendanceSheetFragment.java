@@ -1,4 +1,4 @@
-package com.meetbutani.attendanceapp;
+package com.meetbutani.attendanceapp_student;
 
 import static android.content.Context.CLIPBOARD_SERVICE;
 
@@ -20,9 +20,9 @@ import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.meetbutani.attendanceapp.AdapterClass.AdapterAttendanceSheet;
-import com.meetbutani.attendanceapp.ModelClass.ModelAttendanceSheet;
-import com.meetbutani.attendanceapp.ModelClass.ModelCourse;
+import com.meetbutani.attendanceapp_student.AdapterClass.AdapterAttendanceSheet;
+import com.meetbutani.attendanceapp_student.ModelClass.ModelAttendanceSheet;
+import com.meetbutani.attendanceapp_student.ModelClass.ModelCourse;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -33,6 +33,64 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833964192081:android:7dd25832a09dc4422ee370",
+        "android_client_info": {
+          "package_name": "com.meetbutani.attendanceapp_student"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833964192081-d1jnja3ov944iobun7m2gsfapk34hd9o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcXIYYM8CEhS3DkBAtYZU3OL4WCSsBWWI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "833964192081-d1jnja3ov944iobun7m2gsfapk34hd9o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833964192081:android:76cddbb26aec126c2ee370",
+        "android_client_info": {
+          "package_name": "com.meetbutani.attendanceapp_teacher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833964192081-d1jnja3ov944iobun7m2gsfapk34hd9o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcXIYYM8CEhS3DkBAtYZU3OL4WCSsBWWI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "833964192081-d1jnja3ov944iobun7m2gsfapk34hd9o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"
